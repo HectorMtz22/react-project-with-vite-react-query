@@ -17,3 +17,7 @@ export const createProduct = async (product) => {
 export const deleteProduct = async (id) => {
   return await productsApi.delete(`/${id}`)
 }
+
+export const updateProduct = (product) => {
+  return productsApi.put(`/${product.id}`, product)
+}

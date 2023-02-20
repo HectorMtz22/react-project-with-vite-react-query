@@ -1,8 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query'
-import { deleteProduct, getProducts } from '../api/productsAPI'
+import { deleteProduct, getProducts, updateProduct } from '../api/productsAPI'
 
 export function Products () {
-  const { isLoading, data: products, error, isError } = useQuery({
+  const {
+    isLoading,
+    data: products,
+    error,
+    isError
+  } = useQuery({
     queryKey: ['products'],
     queryFn: getProducts,
     select: (products) => products.sort((a, b) => b.id - a.id)
@@ -16,10 +21,21 @@ export function Products () {
       queryClient.invalidateQueries('products')
     }
   })
+  const updateProductMutation = useMutation({
+    mutationKey: 'updateProduct',
+    mutationFn: updateProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries('products')
+    }
+  })
 
   const handleDelete = (id) => {
     console.log(id)
     deleteProductMutation.mutate(id)
+  }
+  const handleUpdate = (product) => {
+    console.log(product)
+    updateProductMutation.mutate(product)
   }
 
   if (isLoading) return <h2>Loading...</h2>
@@ -31,7 +47,14 @@ export function Products () {
       <p>{product.description}</p>
       <p>{product.price}</p>
       <button onClick={() => handleDelete(product.id)}>Delete</button>
-      <input type='checkbox' name='stock' id={product.id} disabled={!product?.inStock} checked={product?.inStock} readOnly />
+      <input
+        type='checkbox'
+        name='stock'
+        id={product.id}
+        checked={product?.inStock}
+        onChange={(e) =>
+          handleUpdate({ ...product, inStock: e.target.checked })}
+      />
       <label htmlFor={product.id}>In Stock</label>
     </div>
   ))

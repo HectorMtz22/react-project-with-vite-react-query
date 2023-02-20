@@ -5,7 +5,7 @@
       "name": "Laptop",
       "description": "laptop gaming",
       "price": 1000,
-      "inStock": false
+      "inStock": true
     },
     {
       "id": 2,
@@ -26,13 +26,13 @@
       "name": "Monitor",
       "description": "monitor gaming",
       "price": 300,
-      "inStock": true
+      "inStock": false
     },
     {
       "name": "Server",
       "description": "Servidor web",
       "price": "10000",
-      "inStock": true,
+      "inStock": false,
       "id": 8
     }
   ]
