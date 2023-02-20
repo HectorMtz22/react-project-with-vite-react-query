@@ -5,7 +5,7 @@
       "name": "Laptop",
       "description": "laptop gaming",
       "price": 1000,
-      "inStock": true
+      "inStock": false 
     },
     {
       "id": 2,

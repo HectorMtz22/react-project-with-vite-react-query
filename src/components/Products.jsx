@@ -4,7 +4,8 @@ import { getProducts } from '../api/productsAPI'
 export function Products () {
   const { isLoading, data: products, error, isError } = useQuery({
     queryKey: ['products'],
-    queryFn: getProducts
+    queryFn: getProducts,
+    select: (products) => products.sort((a, b) => b.id - a.id)
   })
 
   if (isLoading) return <h2>Loading...</h2>
@@ -16,7 +17,7 @@ export function Products () {
       <p>{product.description}</p>
       <p>{product.price}</p>
       <button>Delete</button>
-      <input type='checkbox' name='stock' id={product.id} />
+      <input type='checkbox' name='stock' id={product.id} disabled={!product?.inStock} checked={product?.inStock} readOnly />
       <label htmlFor={product.id}>In Stock</label>
     </div>
   ))
