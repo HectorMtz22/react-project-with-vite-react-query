@@ -13,3 +13,7 @@ export const createProduct = async (product) => {
   const res = await productsApi.post('/', product)
   return res.data
 }
+
+export const deleteProduct = async (id) => {
+  return await productsApi.delete(`/${id}`)
+}

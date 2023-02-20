@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query'
-import { getProducts } from '../api/productsAPI'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { deleteProduct, getProducts } from '../api/productsAPI'
 
 export function Products () {
   const { isLoading, data: products, error, isError } = useQuery({
@@ -7,6 +7,20 @@ export function Products () {
     queryFn: getProducts,
     select: (products) => products.sort((a, b) => b.id - a.id)
   })
+
+  const queryClient = useQueryClient()
+  const deleteProductMutation = useMutation({
+    mutationKey: 'deleteProduct',
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries('products')
+    }
+  })
+
+  const handleDelete = (id) => {
+    console.log(id)
+    deleteProductMutation.mutate(id)
+  }
 
   if (isLoading) return <h2>Loading...</h2>
   else if (isError) return <h2>{error.message}</h2>
@@ -16,7 +30,7 @@ export function Products () {
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p>{product.price}</p>
-      <button>Delete</button>
+      <button onClick={() => handleDelete(product.id)}>Delete</button>
       <input type='checkbox' name='stock' id={product.id} disabled={!product?.inStock} checked={product?.inStock} readOnly />
       <label htmlFor={product.id}>In Stock</label>
     </div>

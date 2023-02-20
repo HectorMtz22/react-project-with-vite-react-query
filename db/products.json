@@ -5,7 +5,7 @@
       "name": "Laptop",
       "description": "laptop gaming",
       "price": 1000,
-      "inStock": false 
+      "inStock": false
     },
     {
       "id": 2,
@@ -29,37 +29,11 @@
       "inStock": true
     },
     {
-      "id": 5,
-      "name": "Headset",
-      "description": "headset gaming",
-      "price": 400,
-      "inStock": true
-    },
-    {
-      "name": "asdf",
-      "description": "fdsa",
-      "price": "1234",
-      "id": 6
-    },
-    {
-      "name": "asdf",
-      "description": "fdsa",
-      "price": "1234",
-      "id": 7
-    },
-    {
       "name": "Server",
       "description": "Servidor web",
       "price": "10000",
       "inStock": true,
       "id": 8
-    },
-    {
-      "name": "aver",
-      "description": "si",
-      "price": "1000",
-      "inStock": true,
-      "id": 9
     }
   ]
 }
