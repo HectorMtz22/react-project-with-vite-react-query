@@ -15,13 +15,6 @@
       "inStock": true
     },
     {
-      "id": 3,
-      "name": "Keyboard",
-      "description": "keyboard gaming",
-      "price": 200,
-      "inStock": true
-    },
-    {
       "id": 4,
       "name": "Monitor",
       "description": "monitor gaming",
