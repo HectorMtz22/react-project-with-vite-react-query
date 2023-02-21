@@ -1,4 +1,4 @@
-import useProducts from '../../hooks/useProducts'
+import useProducts from '@/hooks/useProducts'
 
 export const Product = ({ product }) => {
   const { handleDelete, handleUpdate } = useProducts()
