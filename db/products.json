@@ -27,13 +27,6 @@
       "description": "monitor gaming",
       "price": 300,
       "inStock": false
-    },
-    {
-      "name": "Server",
-      "description": "Servidor web",
-      "price": "10000",
-      "inStock": false,
-      "id": 8
     }
   ]
 }
